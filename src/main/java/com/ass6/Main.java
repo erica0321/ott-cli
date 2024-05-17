@@ -12,6 +12,7 @@ import java.util.List;
 import static com.ass6.PlayerAction.showPlayerAction;
 import static com.ass6.PrintBanner.printInBox;
 import static com.ass6.PrintBanner.printLine;
+import static com.ass6.medias.AddMovie.addMedia;
 
 public class Main {
   public static List<Media> medias = new ArrayList<Media>(10);
@@ -132,6 +133,20 @@ public class Main {
     return null;
   }
 
+  public static void printMediaType() {
+    System.out.println("| 1. 일반 TV 쇼");
+    System.out.println("| 2. 예능");
+    System.out.println("| 3. 일반 드라마");
+    System.out.println("| 4. 범죄 드라마");
+    System.out.println("| 5. 로맨스 드라마");
+    System.out.println("| 6. 역사 드라마");
+    System.out.println("| 7. 일반 영화");
+    System.out.println("| 8. 슬픈 영화");
+    System.out.println("| 9. 액션 영화");
+    System.out.println("| 0. 프로그램 종료");
+
+  }
+
   private static void showAdminAction(Admin admin) {
     boolean again = false;
     do {
@@ -151,60 +166,6 @@ public class Main {
     } while (again);
   }
 
-  public static void printMediaType() {
-    System.out.println("| 1. 일반 TV 쇼");
-    System.out.println("| 2. 예능");
-    System.out.println("| 3. 일반 드라마");
-    System.out.println("| 4. 범죄 드라마");
-    System.out.println("| 5. 로맨스 드라마");
-    System.out.println("| 6. 역사 드라마");
-    System.out.println("| 7. 일반 영화");
-    System.out.println("| 8. 슬픈 영화");
-    System.out.println("| 9. 액션 영화");
-    System.out.println("| 0. 프로그램 종료");
-
-  }
-
-  private static void addMedia() {
-    printLine();
-    System.out.println("| 📢 영상 등록하기를 선택하셨습니다. 다음은 영상 타입입니다.");
-    printMediaType();
-    printLine();
-    System.out.print("| 🫧 등록할 영상 타입 번호를 입력해주세요: ");
-
-    Scanner input = new Scanner(System.in);
-    int mediaType = input.nextInt();
-
-    switch(mediaType) {
-      case 0:
-        exitSystem();
-        return;
-      case 1:
-        makeEntertainment();
-        return;
-      case 2:
-        makeDrama();
-        return;
-      case 3:
-        makeCrimeDrama();
-        return;
-      case 4:
-        makeRomanticDrama();
-        return;
-      case 5:
-        makeHistoricalDrama();
-        return;
-      case 6:
-        makeMovie();
-        return;
-      case 7:
-        makeSadMovie();
-        return;
-      case 8:
-        makeActionMovie();
-        return;
-    }
-  }
 
   public static void exitSystem() {
     System.out.println("| ⚠️ KCS OTT를 종료합니다. 이용해주셔서 감사합니다.");
