@@ -6,58 +6,56 @@ import com.ass6.member.Player;
 import com.ass6.member.User;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 
+import static com.ass6.AdminAction.showAdminAction;
 import static com.ass6.PlayerAction.showPlayerAction;
 import static com.ass6.PrintBanner.printInBox;
 import static com.ass6.PrintBanner.printLine;
-import static com.ass6.medias.AddMovie.addMedia;
 
 public class Main {
-  public static List<Media> medias = new ArrayList<Media>(10);
-  public static List<Entertainment> entertainments = new ArrayList<Entertainment>(10);
-  public static List<Drama> dramas = new ArrayList<Drama>(10);
-  public static List<RomanticDrama> romanticDramas = new ArrayList<RomanticDrama>(10);
-  public static List<CrimeDrama> crimeDramas = new ArrayList<CrimeDrama>(10);
-  public static List<HistoricalDrama> historicalDramas = new ArrayList<HistoricalDrama>(10);
-  public static List<Movie> movies = new ArrayList<Movie>(10);
-  public static List<SadMovie> sadMovies = new ArrayList<SadMovie>(10);
-  public static List<ActionMovie> actionMovies = new ArrayList<ActionMovie>(10);
+  public static List<Media> medias = new ArrayList<>(10);
+  public static List<Entertainment> entertainments = new ArrayList<>(10);
+  public static List<Drama> dramas = new ArrayList<>(10);
+  public static List<RomanticDrama> romanticDramas = new ArrayList<>(10);
+  public static List<CrimeDrama> crimeDramas = new ArrayList<>(10);
+  public static List<HistoricalDrama> historicalDramas = new ArrayList<>(10);
+  public static List<Movie> movies = new ArrayList<>(10);
+  public static List<SadMovie> sadMovies = new ArrayList<>(10);
+  public static List<ActionMovie> actionMovies = new ArrayList<>(10);
 
-  private static List<User> users = new ArrayList<User>();
-  private static User logInUser; // User 타입으로 변경
-
+  private static final List<User> users = new ArrayList<>();
 
   public static void main(String[] args) {
-    String banner = "  _  __   ____    _____       _____    _______   _______ \n" +
-        " | |/ /  / __ \\  |  ___|     /  _  \\  |__   __| |__   __|\n" +
-        " | ' /  | |  |_| | |___     | |   | |    | |       | |   \n" +
-        " |  <   | |      |___  |    | |   | |    | |       | |   \n" +
-        " | . \\  | |__|¯|  ___| |    | | _ | |    | |       | |   \n" +
-        " |_|\\_\\  \\____/  |_____|     \\_____/     |_|       |_|   \n";
-
-    String message = "예능, 드라마, 영화 스트리밍 하세요!";
-    printInBox(banner, message);
-
-    boolean goBack = false;
-
     //영상 목록 불러오기
     loadingMedias();
     //유저 목록 불러오기
     loadingUsers();
 
     //로그인 하기
-    User logInUser = logIn();
+    while(true) {
+      String banner = "  _  __   ____    _____       _____    _______   _______ \n" +
+          " | |/ /  / __ \\  |  ___|     /  _  \\  |__   __| |__   __|\n" +
+          " | ' /  | |  |_| | |___     | |   | |    | |       | |   \n" +
+          " |  <   | |      |___  |    | |   | |    | |       | |   \n" +
+          " | . \\  | |__|¯|  ___| |    | | _ | |    | |       | |   \n" +
+          " |_|\\_\\  \\____/  |_____|     \\_____/     |_|       |_|   \n";
 
-    if (logInUser instanceof Player) {
-      System.out.println("| 🤗 " + logInUser.getId() + " 님 환영합니다.");
-      showPlayerAction((Player) logInUser); // 캐스팅
-    } else if (logInUser instanceof Admin) {
-      System.out.println("| 🤗 관리자님 환영합니다.");
-      showAdminAction((Admin) logInUser );
+      String message = "예능, 드라마, 영화 스트리밍 하세요!";
+      printInBox(banner, message);
+
+      User logInUser = logIn();
+
+      if (logInUser instanceof Player) {
+        System.out.println("| 🤗 " + logInUser.getId() + " 님 환영합니다.");
+        showPlayerAction((Player) logInUser); // 캐스팅
+      } else if (logInUser instanceof Admin) {
+        System.out.println("| 🤗 관리자님 환영합니다.");
+        showAdminAction((Admin) logInUser );
+      }
     }
-
   }
 
   // 정보 불러오기
@@ -108,7 +106,7 @@ public class Main {
   }
 
   private static void loadingUsers() {
-    users.add(new Player("player1", "Qwer123!", null, "", 0));
+    users.add(new Player("player1", "Qwer123!", new ArrayList<>()));
     users.add(new Admin("admin1", "Qwer123!", "top"));
   }
 
@@ -143,33 +141,58 @@ public class Main {
     System.out.println("| 7. 일반 영화");
     System.out.println("| 8. 슬픈 영화");
     System.out.println("| 9. 액션 영화");
-    System.out.println("| 0. 프로그램 종료");
-
   }
-
-  private static void showAdminAction(Admin admin) {
-    boolean again = false;
-    do {
-      printLine();
-      System.out.print("| 🫧 무엇을 하시겠습니까? (1: 영상 등록, 2: 영상 삭제, 0: 프로그램 종료): ");
-      Scanner input = new Scanner(System.in);
-      int actionType = input.nextInt();
-
-      if (actionType == 0) {
-        exitSystem();
-      }
-
-      if (actionType == 1) {
-        addMedia();
-      }
-
-    } while (again);
-  }
-
 
   public static void exitSystem() {
     System.out.println("| ⚠️ KCS OTT를 종료합니다. 이용해주셔서 감사합니다.");
     printLine();
     System.exit(0);
+  }
+
+  public static void printInputError() {
+    System.out.println("| ⚠️ 올바르지 않은 입력입니다. 다시 입력해주세요.");
+    printLine();
+  }
+
+  public static void printLogOut() {
+    printLine();
+    System.out.println("| ⚠️ 로그아웃되었습니다.");
+  }
+
+  public static void showMediaList(List<? extends Media> medias) {
+    int index = 1;
+    printLine();
+    System.out.println("| 📢 선택하신 타입의 영상 목록입니다.");
+    for (Media media : medias) {
+      if (media != null) {
+        System.out.println("| " + (index++) + ". " + media.toString());
+      }
+    }
+    printLine();
+  }
+
+
+  //유저 input 받기
+  public static int getUserInput(String message, int min, int max) {
+    Scanner input = new Scanner(System.in);
+    int result;
+
+    while (true) {
+      System.out.print(message);
+      try {
+        result = input.nextInt();
+        if (result < min || result > max) {
+          throw new InvalidInputException();
+        }
+        break;
+      } catch (InputMismatchException e) {
+        printInputError();
+        input.next();
+      } catch (InvalidInputException e) {
+        printInputError();
+      }
+    }
+
+    return result;
   }
 }
