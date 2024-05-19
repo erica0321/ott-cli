@@ -10,8 +10,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 
-import static com.ass6.AdminAction.showAdminAction;
-import static com.ass6.PlayerAction.showPlayerAction;
+import static com.ass6.member.Admin.showAdminAction;
+import static com.ass6.member.Player.showPlayerAction;
 import static com.ass6.PrintBanner.printInBox;
 import static com.ass6.PrintBanner.printLine;
 
@@ -28,38 +28,7 @@ public class Main {
 
   private static final List<User> users = new ArrayList<>();
 
-  public static void main(String[] args) {
-    //영상 목록 불러오기
-    loadingMedias();
-    //유저 목록 불러오기
-    loadingUsers();
-
-    //로그인 하기
-    while(true) {
-      String banner = "  _  __   ____    _____       _____    _______   _______ \n" +
-          " | |/ /  / __ \\  |  ___|     /  _  \\  |__   __| |__   __|\n" +
-          " | ' /  | |  |_| | |___     | |   | |    | |       | |   \n" +
-          " |  <   | |      |___  |    | |   | |    | |       | |   \n" +
-          " | . \\  | |__|¯|  ___| |    | | _ | |    | |       | |   \n" +
-          " |_|\\_\\  \\____/  |_____|     \\_____/     |_|       |_|   \n";
-
-      String message = "예능, 드라마, 영화 스트리밍 하세요!";
-      printInBox(banner, message);
-
-      User logInUser = logIn();
-
-      if (logInUser instanceof Player) {
-        System.out.println("| 🤗 " + logInUser.getId() + " 님 환영합니다.");
-        showPlayerAction((Player) logInUser); // 캐스팅
-      } else if (logInUser instanceof Admin) {
-        System.out.println("| 🤗 관리자님 환영합니다.");
-        showAdminAction((Admin) logInUser );
-      }
-    }
-  }
-
-  // 정보 불러오기
-  private static void loadingMedias() {
+  static {
     medias.add(new Media("KBS 9시 뉴스", 60));
 
     entertainments.add(new Entertainment("신서유기", 90, "tvN"));
@@ -105,9 +74,34 @@ public class Main {
     actionMovies.add(new ActionMovie("존 윅", 101, 5000000, true, "Summit Entertainment"));
   }
 
-  private static void loadingUsers() {
+  static {
     users.add(new Player("player1", "Qwer123!", new ArrayList<>()));
     users.add(new Admin("admin1", "Qwer123!", "top"));
+  }
+
+  public static void main(String[] args) {
+    //로그인 하기
+    while(true) {
+      String banner = "  _  __   ____    _____       _____    _______   _______ \n" +
+          " | |/ /  / __ \\  |  ___|     /  _  \\  |__   __| |__   __|\n" +
+          " | ' /  | |  |_| | |___     | |   | |    | |       | |   \n" +
+          " |  <   | |      |___  |    | |   | |    | |       | |   \n" +
+          " | . \\  | |__|¯|  ___| |    | | _ | |    | |       | |   \n" +
+          " |_|\\_\\  \\____/  |_____|     \\_____/     |_|       |_|   \n";
+
+      String message = "예능, 드라마, 영화 스트리밍 하세요!";
+      printInBox(banner, message);
+
+      User logInUser = logIn();
+
+      if (logInUser instanceof Player) {
+        System.out.println("| 🤗 " + logInUser.getId() + " 님 환영합니다.");
+        showPlayerAction((Player) logInUser); // 캐스팅
+      } else if (logInUser instanceof Admin) {
+        System.out.println("| 🤗 관리자님 환영합니다.");
+        showAdminAction((Admin) logInUser );
+      }
+    }
   }
 
   // 로그인 로직
@@ -131,18 +125,6 @@ public class Main {
     return null;
   }
 
-  public static void printMediaType() {
-    System.out.println("| 1. 일반 TV 쇼");
-    System.out.println("| 2. 예능");
-    System.out.println("| 3. 일반 드라마");
-    System.out.println("| 4. 범죄 드라마");
-    System.out.println("| 5. 로맨스 드라마");
-    System.out.println("| 6. 역사 드라마");
-    System.out.println("| 7. 일반 영화");
-    System.out.println("| 8. 슬픈 영화");
-    System.out.println("| 9. 액션 영화");
-  }
-
   public static void exitSystem() {
     System.out.println("| ⚠️ KCS OTT를 종료합니다. 이용해주셔서 감사합니다.");
     printLine();
@@ -158,19 +140,6 @@ public class Main {
     printLine();
     System.out.println("| ⚠️ 로그아웃되었습니다.");
   }
-
-  public static void showMediaList(List<? extends Media> medias) {
-    int index = 1;
-    printLine();
-    System.out.println("| 📢 선택하신 타입의 영상 목록입니다.");
-    for (Media media : medias) {
-      if (media != null) {
-        System.out.println("| " + (index++) + ". " + media.toString());
-      }
-    }
-    printLine();
-  }
-
 
   //유저 input 받기
   public static int getUserInput(String message, int min, int max) {
@@ -192,7 +161,6 @@ public class Main {
         printInputError();
       }
     }
-
     return result;
   }
 }

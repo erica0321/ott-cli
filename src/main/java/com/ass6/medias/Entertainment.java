@@ -8,14 +8,6 @@ public class Entertainment extends Media {
     this.channel = channel;
   }
 
-  public String getBroadCom() {
-    return channel;
-  }
-
-  public void setBroadCom(String broadCom) {
-    this.channel = broadCom;
-  }
-
   @Override
   public String toString() {
     return "제목: " + super.getTitle() + " (" + super.getDuration() + "분, " + channel + ")";

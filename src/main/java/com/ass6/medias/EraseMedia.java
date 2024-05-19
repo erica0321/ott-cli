@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import static com.ass6.Main.*;
-import static com.ass6.PlayerAction.checkActions;
 import static com.ass6.PrintBanner.printLine;
+import static com.ass6.medias.Media.*;
 
 public class EraseMedia {
   public static void eraseMedia() {
@@ -39,7 +39,7 @@ public class EraseMedia {
     }
 
     // 영상 목록 보여주기
-    showMediaList(targetMedias);
+    printMediaList(targetMedias);
 
     int mediaNum = getUserInput("| 🫧 삭제하실 영상의 번호를 입력해주세요: ", 1, targetMedias.size()) - 1;
 

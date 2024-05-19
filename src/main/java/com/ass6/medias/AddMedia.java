@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static com.ass6.Main.*;
+import static com.ass6.medias.Media.printMediaType;
 import static com.ass6.PrintBanner.printLine;
 
 public class AddMedia {
