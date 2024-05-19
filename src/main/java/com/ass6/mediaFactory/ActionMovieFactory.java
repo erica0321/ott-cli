@@ -1,4 +1,4 @@
-package com.ass6.factory;
+package com.ass6.mediaFactory;
 
 import com.ass6.media.ActionMovie;
 import com.ass6.media.Media;

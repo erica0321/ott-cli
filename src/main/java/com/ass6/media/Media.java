@@ -5,7 +5,7 @@ import com.ass6.user.Player;
 
 import java.util.List;
 
-import static com.ass6.constant.PlayerActionConstant.*;
+import static com.ass6.utils.PlayerActionConstant.*;
 import static com.ass6.Main.*;
 import static com.ass6.utils.InputUtils.getUserInput;
 import static com.ass6.utils.PrintUtils.*;

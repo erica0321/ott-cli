@@ -1,7 +1,7 @@
 package com.ass6.controller;
 
 import com.ass6.data.Medias;
-import com.ass6.factory.*;
+import com.ass6.mediaFactory.*;
 import com.ass6.media.*;
 
 import java.util.*;

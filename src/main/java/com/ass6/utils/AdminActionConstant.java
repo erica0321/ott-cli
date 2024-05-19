@@ -1,4 +1,4 @@
-package com.ass6.constant;
+package com.ass6.utils;
 
 public class AdminActionConstant {
   public static final int ADD_MEDIA = 1;

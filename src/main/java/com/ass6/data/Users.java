@@ -11,14 +11,14 @@ import java.util.Scanner;
 import static com.ass6.Main.exitSystem;
 
 public class Users {
-  private static List<User> users = new ArrayList<>();
+  private static ArrayList<User> users = new ArrayList<>();
 
-  {
+  static {
     users.add(new Player("player1", "Qwer123!", new ArrayList<>()));
     users.add(new Admin("admin1", "Qwer123!", "top"));
   }
 
-  public List<User> getUsers() {
+  public static List<User> getUsers() {
     return users;
   }
 

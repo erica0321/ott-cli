@@ -3,7 +3,7 @@ package com.ass6.user;
 import java.util.Scanner;
 
 import static com.ass6.Main.*;
-import static com.ass6.constant.AdminActionConstant.*;
+import static com.ass6.utils.AdminActionConstant.*;
 import static com.ass6.controller.MediaController.addMedia;
 import static com.ass6.controller.MediaController.eraseMedia;
 import static com.ass6.utils.InputUtils.getUserInput;
