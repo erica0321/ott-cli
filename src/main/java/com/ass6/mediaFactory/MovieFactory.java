@@ -10,7 +10,7 @@ public class MovieFactory implements MediaFactory{
   public Media createMedia(Scanner input) {
     System.out.println("| 📢 일반 영화를 등록합니다.");
     System.out.print("| 🫧 제목을 입력해주세요: ");
-    String title = input.next();
+    String title = input.nextLine();
     System.out.print("| 🫧 영상 시간을 입력해주세요 (단위: 분) : ");
     int duration = input.nextInt();
     System.out.print("| 🫧 관객수를 입력해주세요: ");
