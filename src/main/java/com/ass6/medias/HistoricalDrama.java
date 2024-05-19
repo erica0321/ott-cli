@@ -12,12 +12,8 @@ public class HistoricalDrama extends Drama {
     return generation;
   }
 
-  public void setGeneration(String generation) {
-    this.generation = generation;
-  }
-
   @Override
   public String toString() {
-    return super.toString() + " - " + generation;
+    return super.toString() + " - " + getGeneration();
   }
 }

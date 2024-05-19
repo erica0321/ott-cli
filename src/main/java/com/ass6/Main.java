@@ -6,14 +6,12 @@ import com.ass6.member.Player;
 import com.ass6.member.User;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 
 import static com.ass6.member.Admin.showAdminAction;
 import static com.ass6.member.Player.showPlayerAction;
-import static com.ass6.PrintBanner.printInBox;
-import static com.ass6.PrintBanner.printLine;
+import static com.ass6.utils.PrintUtils.*;
 
 public class Main {
   public static List<Media> medias = new ArrayList<>(10);
@@ -129,38 +127,5 @@ public class Main {
     System.out.println("| ⚠️ KCS OTT를 종료합니다. 이용해주셔서 감사합니다.");
     printLine();
     System.exit(0);
-  }
-
-  public static void printInputError() {
-    System.out.println("| ⚠️ 올바르지 않은 입력입니다. 다시 입력해주세요.");
-    printLine();
-  }
-
-  public static void printLogOut() {
-    printLine();
-    System.out.println("| ⚠️ 로그아웃되었습니다.");
-  }
-
-  //유저 input 받기
-  public static int getUserInput(String message, int min, int max) {
-    Scanner input = new Scanner(System.in);
-    int result;
-
-    while (true) {
-      System.out.print(message);
-      try {
-        result = input.nextInt();
-        if (result < min || result > max) {
-          throw new InvalidInputException();
-        }
-        break;
-      } catch (InputMismatchException e) {
-        printInputError();
-        input.next();
-      } catch (InvalidInputException e) {
-        printInputError();
-      }
-    }
-    return result;
   }
 }

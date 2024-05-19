@@ -3,9 +3,12 @@ package com.ass6.member;
 import java.util.Scanner;
 
 import static com.ass6.Main.*;
-import static com.ass6.PrintBanner.printLine;
-import static com.ass6.medias.AddMedia.addMedia;
-import static com.ass6.medias.EraseMedia.eraseMedia;
+import static com.ass6.constant.AdminActionConstant.*;
+import static com.ass6.controller.MediaController.addMedia;
+import static com.ass6.controller.MediaController.eraseMedia;
+import static com.ass6.utils.InputUtils.getUserInput;
+import static com.ass6.utils.PrintUtils.printLine;
+import static com.ass6.utils.PrintUtils.printLogOut;
 
 public class Admin extends User{
   private String role;
@@ -18,10 +21,6 @@ public class Admin extends User{
     this.role = role;
   }
 
-  private static final int ADD_MEDIA = 1;
-  private static final int ERASE_MEDIA = 2;
-  private static final int LOGOUT = 3;
-  private static final int EXIT = 0;
 
   public static void showAdminAction(Admin admin) {
     Scanner input = new Scanner(System.in);

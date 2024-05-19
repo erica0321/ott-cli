@@ -4,10 +4,10 @@ import com.ass6.member.Player;
 
 import java.util.List;
 
-import static com.ass6.PlayerActionConstants.*;
+import static com.ass6.constant.PlayerActionConstant.*;
 import static com.ass6.Main.*;
-import static com.ass6.Main.getUserInput;
-import static com.ass6.PrintBanner.printLine;
+import static com.ass6.utils.InputUtils.getUserInput;
+import static com.ass6.utils.PrintUtils.*;
 
 public class Media {
   private String title;
@@ -28,18 +28,6 @@ public class Media {
 
   public String toString() {
     return getTitle() + " (" + getDuration() + "분)";
-  }
-
-  public static void printMediaType() {
-    System.out.println("| 1. 일반 TV 쇼");
-    System.out.println("| 2. 예능");
-    System.out.println("| 3. 일반 드라마");
-    System.out.println("| 4. 범죄 드라마");
-    System.out.println("| 5. 로맨스 드라마");
-    System.out.println("| 6. 역사 드라마");
-    System.out.println("| 7. 일반 영화");
-    System.out.println("| 8. 슬픈 영화");
-    System.out.println("| 9. 액션 영화");
   }
 
   //시청하기 시, 영상 타입 보여주기
@@ -89,17 +77,4 @@ public class Media {
     printLine();
     return getUserInput("| ⚠️ 영상이 끝났습니다. 프로그램을 종료하시겠습니까? (0: 종료, 1: 다른 활동하기): ", 0, 1) == 1;
   }
-
-  public static void printMediaList(List<? extends Media> medias) {
-    int index = 1;
-    printLine();
-    System.out.println("| 📢 선택하신 타입의 영상 목록입니다.");
-    for (Media media : medias) {
-      if (media != null) {
-        System.out.println("| " + (index++) + ". " + media.toString());
-      }
-    }
-    printLine();
-  }
-
 }

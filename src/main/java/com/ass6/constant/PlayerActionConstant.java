@@ -1,6 +1,6 @@
-package com.ass6;
+package com.ass6.constant;
 
-public class PlayerActionConstants {
+public class PlayerActionConstant {
   public static final int VIEW_MEDIA = 1;
   public static final int VIEW_HISTORY = 2;
   public static final int LOGOUT = 3;

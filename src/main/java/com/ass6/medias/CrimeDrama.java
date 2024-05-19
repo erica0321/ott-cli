@@ -12,12 +12,8 @@ public class CrimeDrama extends Drama {
     return crimeType;
   }
 
-  public void setCrimeType(String crimeType) {
-    this.crimeType = crimeType;
-  }
-
   @Override
   public String toString() {
-    return super.toString() + " - " + crimeType;
+    return super.toString() + " - " + getCrimeType();
   }
 }

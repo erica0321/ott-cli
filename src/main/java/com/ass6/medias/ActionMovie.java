@@ -12,12 +12,8 @@ public class ActionMovie extends Movie {
     return film;
   }
 
-  public void setFilm(String film) {
-    this.film = film;
-  }
-
   @Override
   public String toString() {
-    return super.toString() + " - " + film;
+    return super.toString() + " - " + getFilm();
   }
 }

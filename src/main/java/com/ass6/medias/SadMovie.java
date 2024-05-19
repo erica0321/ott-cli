@@ -18,6 +18,6 @@ public class SadMovie extends Movie {
 
   @Override
   public String toString() {
-    return super.toString() + " - " + reason;
+    return super.toString() + " - " + getReason() ;
   }
 }

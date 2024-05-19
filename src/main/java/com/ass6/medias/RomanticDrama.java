@@ -14,20 +14,12 @@ public class RomanticDrama extends Drama {
     return actorF;
   }
 
-  public void setActorF(String actorF) {
-    this.actorF = actorF;
-  }
-
   public String getActorM() {
     return actorM;
   }
 
-  public void setActorM(String actorM) {
-    this.actorM = actorM;
-  }
-
   @Override
   public String toString() {
-    return super.toString() + " - 여자 주인공: " + actorF + ", 남자 주인공: " + actorM;
+    return super.toString() + " - 여자 주인공: " + getActorF() + ", 남자 주인공: " + getActorM();
   }
 }

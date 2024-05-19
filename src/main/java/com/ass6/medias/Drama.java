@@ -14,20 +14,12 @@ public class Drama extends Media {
     return episodes;
   }
 
-  public void setEpisodes(int episodes) {
-    this.episodes = episodes;
-  }
-
   public double getRating() {
     return rating;
   }
 
-  public void setRating(double rating) {
-    this.rating = rating;
-  }
-
   @Override
   public String toString() {
-    return super.getTitle() + " (" + super.getDuration() + "분, 총 " + episodes + "회, 평점 " + rating + ")";
+    return super.getTitle() + " (" + super.getDuration() + "분, 총 " + getEpisodes() + "회, 평점 " + getRating() + ")";
   }
 }

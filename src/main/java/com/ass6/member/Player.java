@@ -5,12 +5,13 @@ import com.ass6.medias.Media;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.ass6.PlayerActionConstants.*;
+import static com.ass6.constant.PlayerActionConstant.*;
 import static com.ass6.Main.*;
-import static com.ass6.Main.getUserInput;
-import static com.ass6.PrintBanner.printLine;
 import static com.ass6.medias.Media.showMedia;
 import static com.ass6.medias.Media.showMediaType;
+import static com.ass6.utils.InputUtils.getUserInput;
+import static com.ass6.utils.PrintUtils.printLine;
+import static com.ass6.utils.PrintUtils.printLogOut;
 
 public class Player extends User{
   private List<Media> watched;

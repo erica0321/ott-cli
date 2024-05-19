@@ -15,20 +15,12 @@ Movie extends Media {
     return view;
   }
 
-  public void setView(int view) {
-    this.view = view;
-  }
-
-  public boolean isRelease() {
+  public boolean getRelease() {
     return release;
-  }
-
-  public void setRelease(boolean release) {
-    this.release = release;
   }
 
   @Override
   public String toString() {
-    return super.getTitle() + " (" + super.getDuration() + "분, " + view + "명, " + (release ? "상영중" : "상영중 아님") + ")";
+    return super.getTitle() + " (" + super.getDuration() + "분, " + getView() + "명, " + (getRelease() ? "상영중" : "상영중 아님") + ")";
   }
 }

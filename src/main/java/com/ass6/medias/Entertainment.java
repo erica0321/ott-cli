@@ -8,10 +8,13 @@ public class Entertainment extends Media {
     this.channel = channel;
   }
 
-  @Override
-  public String toString() {
-    return "제목: " + super.getTitle() + " (" + super.getDuration() + "분, " + channel + ")";
+  public String getChannel() {
+    return channel;
   }
 
+  @Override
+  public String toString() {
+    return "제목: " + super.getTitle() + " (" + super.getDuration() + "분, " + getChannel() + ")";
+  }
 }
 
