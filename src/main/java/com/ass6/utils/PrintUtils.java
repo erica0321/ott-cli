@@ -35,7 +35,7 @@ public class PrintUtils {
     System.out.println("| 📢 선택하신 타입의 영상 목록입니다.");
     for (Media media : medias) {
       if (media != null) {
-        System.out.println("| " + (index++) + ". " + media.toString());
+        System.out.println("| " + (index++) + ". " + media);
       }
     }
     printLine();
@@ -86,5 +86,11 @@ public class PrintUtils {
       }
     }
     return width;
+  }
+
+  public static void printAlreadyExist() {
+    printLine();
+    System.out.println("| ⚠️ 이미 존재하는 영상입니다. ");
+    printLine();
   }
 }
