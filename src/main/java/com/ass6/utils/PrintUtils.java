@@ -1,6 +1,6 @@
 package com.ass6.utils;
 
-import com.ass6.medias.Media;
+import com.ass6.media.Media;
 
 import java.util.List;
 
@@ -73,7 +73,6 @@ public class PrintUtils {
   private static String padRight(String s, int n) {
     return String.format("%-" + n + "s", s);
   }
-
 
   private static int getDisplayWidth(String s) {
     int width = 0;

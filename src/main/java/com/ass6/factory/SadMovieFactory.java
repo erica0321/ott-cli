@@ -1,7 +1,7 @@
 package com.ass6.factory;
 
-import com.ass6.medias.Media;
-import com.ass6.medias.SadMovie;
+import com.ass6.media.Media;
+import com.ass6.media.SadMovie;
 
 import java.util.Scanner;
 

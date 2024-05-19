@@ -1,14 +1,13 @@
-package com.ass6.member;
+package com.ass6.user;
 
-import com.ass6.medias.Media;
+import com.ass6.media.Media;
 
 import java.util.List;
-import java.util.Scanner;
 
 import static com.ass6.constant.PlayerActionConstant.*;
 import static com.ass6.Main.*;
-import static com.ass6.medias.Media.showMedia;
-import static com.ass6.medias.Media.showMediaType;
+import static com.ass6.media.Media.showMedia;
+import static com.ass6.media.Media.showMediaType;
 import static com.ass6.utils.InputUtils.getUserInput;
 import static com.ass6.utils.PrintUtils.printLine;
 import static com.ass6.utils.PrintUtils.printLogOut;
@@ -29,9 +28,8 @@ public class Player extends User{
     watched.add(0, media);
   }
 
-  public static void showPlayerAction(Player player) {
+  public void showPlayerAction() {
     printLine();
-    Scanner input = new Scanner(System.in);
 
     //액션 입력
     while (true) {
@@ -43,13 +41,13 @@ public class Player extends User{
           return;
         case VIEW_MEDIA:
           List<? extends Media> targetMedias = showMediaType();
-          boolean isAgain = showMedia(targetMedias, player);
+          boolean isAgain = showMedia(targetMedias);
           printLine();
           if (isAgain) continue;
           else exitSystem();
           break;
         case VIEW_HISTORY:
-          isAgain = showWatchedList(player);
+          isAgain = showWatchedList();
           printLine();
           if (!isAgain) exitSystem();
           break;
@@ -61,10 +59,8 @@ public class Player extends User{
   }
 
   //시청 기록 보기
-  private static boolean showWatchedList(Player player) {
-    Scanner input = new Scanner(System.in);
-
-    List<? extends Media> watchedMedias = player.getWatched();
+  private boolean showWatchedList() {
+    List<? extends Media> watchedMedias = getWatched();
     printLine();
     System.out.println("| 📢 시청기록 보기를 선택하셨습니다. 다음은 시청 기록입니다.");
 

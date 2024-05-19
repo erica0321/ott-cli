@@ -1,4 +1,4 @@
-package com.ass6.medias;
+package com.ass6.media;
 
 public class ActionMovie extends Movie {
   private String film;

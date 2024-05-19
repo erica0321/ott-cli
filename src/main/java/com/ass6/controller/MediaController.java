@@ -1,14 +1,12 @@
 package com.ass6.controller;
 
+import com.ass6.data.Medias;
 import com.ass6.factory.*;
-import com.ass6.medias.*;
+import com.ass6.media.*;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-import static com.ass6.Main.*;
-import static com.ass6.medias.Media.*;
+import static com.ass6.media.Media.*;
 import static com.ass6.utils.InputUtils.getUserInput;
 import static com.ass6.utils.PrintUtils.*;
 
@@ -45,8 +43,6 @@ public class MediaController {
 
   public static void eraseMedia() {
     printLine();
-    Scanner input = new Scanner(System.in);
-
     while (true) {
       System.out.println("| 📢 영상 삭제를 선택하셨습니다. 다음은 영상 타입입니다.");
       printMediaType();
@@ -84,24 +80,26 @@ public class MediaController {
   }
 
   private static void addMediaToCollection(Media media) {
+    Medias mediaList = new Medias();
+
     if (media instanceof Entertainment) {
-      entertainments.add((Entertainment) media);
+      mediaList.addEntertainment((Entertainment) media);
     } else if (media instanceof CrimeDrama) {
-      crimeDramas.add((CrimeDrama) media);
+      mediaList.addCrimeDrama((CrimeDrama) media);
     } else if (media instanceof RomanticDrama) {
-      romanticDramas.add((RomanticDrama) media);
+      mediaList.addRomanticDrama((RomanticDrama) media);
     } else if (media instanceof HistoricalDrama) {
-      historicalDramas.add((HistoricalDrama) media);
+      mediaList.addHistoricalDrama((HistoricalDrama) media);
     } else if (media instanceof SadMovie) {
-      sadMovies.add((SadMovie) media);
+      mediaList.addSadMovie((SadMovie) media);
     } else if (media instanceof ActionMovie) {
-      actionMovies.add((ActionMovie) media);
+      mediaList.addActionMovie((ActionMovie) media);
     } else if (media instanceof Drama) {
-      dramas.add((Drama) media);
+      mediaList.addDrama((Drama) media);
     } else if (media instanceof Movie) {
-      movies.add((Movie) media);
+      mediaList.addMovie((Movie) media);
     } else {
-      medias.add(media);
+      mediaList.getMedias().add(media);
     }
   }
 

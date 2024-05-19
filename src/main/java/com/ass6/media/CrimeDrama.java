@@ -1,4 +1,4 @@
-package com.ass6.medias;
+package com.ass6.media;
 
 public class CrimeDrama extends Drama {
   private String crimeType;

@@ -1,4 +1,4 @@
-package com.ass6.member;
+package com.ass6.user;
 
 public class User {
   private String id;

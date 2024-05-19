@@ -1,6 +1,7 @@
-package com.ass6.medias;
+package com.ass6.media;
 
-import com.ass6.member.Player;
+import com.ass6.data.Medias;
+import com.ass6.user.Player;
 
 import java.util.List;
 
@@ -44,28 +45,30 @@ public class Media {
 
   //영상 타입에 따른 영상 목록 전달
   public static List<? extends Media> checkActions(int type) {
+    Medias mediaList = new Medias();
+
     return switch (type) {
-      case 1 -> medias;
-      case 2 -> entertainments;
-      case 3 -> dramas;
-      case 4 -> crimeDramas;
-      case 5 -> romanticDramas;
-      case 6 -> historicalDramas;
-      case 7 -> movies;
-      case 8 -> sadMovies;
-      case 9 -> actionMovies;
+      case 1 -> mediaList.getMedias();
+      case 2 -> mediaList.getEntertainments();
+      case 3 -> mediaList.getDramas();
+      case 4 -> mediaList.getCrimeDramas();
+      case 5 -> mediaList.getRomanticDramas();
+      case 6 -> mediaList.getHistoricalDramas();
+      case 7 -> mediaList.getMovies();
+      case 8 -> mediaList.getSadMovies();
+      case 9 -> mediaList.getActionMovies();
       default -> null;
     };
   }
 
   //영상 목록 속 영상들 보여주기 및 시청
-  public static boolean showMedia(List<? extends Media> medias, Player player) {
+  public static boolean showMedia(List<? extends Media> medias) {
     printMediaList(medias);
 
     int mediaNum = getUserInput("| 🫧 시청하실 영상의 번호를 입력해주세요: ", 1, medias.size());
     Media targetMedia = medias.get(mediaNum - 1);
     System.out.println("| 🍿 '" + targetMedia + "'을 시청중입니다.");
-    player.addWatched(targetMedia);
+    ((Player) logInUser).addWatched(targetMedia);
 
     // 5초 대기
     try {
