@@ -71,7 +71,7 @@ public class Player extends User{
     int index = 1;
     for (Media media : watchedMedias) {
       if (media != null) {
-        System.out.println("| " + (index++) + ". " + media.toString());
+        System.out.println("| " + (index++) + ". " + media);
       }
     }
 

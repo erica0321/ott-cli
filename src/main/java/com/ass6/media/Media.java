@@ -19,6 +19,10 @@ public class Media {
     this.duration = duration;
   }
 
+  public Media() {
+
+  }
+
   public String getTitle() {
     return title;
   }

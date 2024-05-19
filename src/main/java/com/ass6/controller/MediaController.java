@@ -3,7 +3,9 @@ package com.ass6.controller;
 import com.ass6.data.Medias;
 import com.ass6.mediaFactory.*;
 import com.ass6.media.*;
+import com.ass6.utils.AlreadyExistException;
 
+import java.awt.print.Pageable;
 import java.util.*;
 
 import static com.ass6.media.Media.*;
@@ -11,6 +13,9 @@ import static com.ass6.utils.InputUtils.getUserInput;
 import static com.ass6.utils.PrintUtils.*;
 
 public class MediaController {
+
+  private static Medias medias = new Medias();
+
   public static void addMedia() {
     printLine();
 
@@ -20,7 +25,6 @@ public class MediaController {
       printLine();
 
       int mediaType = getUserInput("| 🫧 등록할 영상 타입 번호를 입력해주세요 : ", 1, 9);
-
       switch (mediaType) {
         case 1 -> makeMedia(new MediaFactoryImpl());
         case 2 -> makeMedia(new EntertainmentFactory());
@@ -63,44 +67,37 @@ public class MediaController {
     Scanner input = new Scanner(System.in);
     printLine();
 
+    Media media;
     while (true) {
       try {
-        Media media = factory.createMedia(input);
-        addMediaToCollection(media);
-        printLine();
-        System.out.println("| 📢 등록이 완료됐습니다. 등록된 내용은 다음과 같습니다.");
-        System.out.println("| " + media.toString());
-        printLine();
+        media = factory.createMedia(input);
         break;
       } catch (InputMismatchException e) {
         printInputError();
-        input.next();
       }
+    }
+
+    try {
+      addMediaToCollection(media);
+      printLine();
+      System.out.println("| 📢 등록이 완료됐습니다. 등록된 내용은 다음과 같습니다.");
+      System.out.println("| " + media.toString());
+      printLine();
+    } catch (AlreadyExistException e) {
+      printAlreadyExist();
     }
   }
 
-  private static void addMediaToCollection(Media media) {
-    Medias mediaList = new Medias();
-
-    if (media instanceof Entertainment) {
-      mediaList.addEntertainment((Entertainment) media);
-    } else if (media instanceof CrimeDrama) {
-      mediaList.addCrimeDrama((CrimeDrama) media);
-    } else if (media instanceof RomanticDrama) {
-      mediaList.addRomanticDrama((RomanticDrama) media);
-    } else if (media instanceof HistoricalDrama) {
-      mediaList.addHistoricalDrama((HistoricalDrama) media);
-    } else if (media instanceof SadMovie) {
-      mediaList.addSadMovie((SadMovie) media);
-    } else if (media instanceof ActionMovie) {
-      mediaList.addActionMovie((ActionMovie) media);
-    } else if (media instanceof Drama) {
-      mediaList.addDrama((Drama) media);
-    } else if (media instanceof Movie) {
-      mediaList.addMovie((Movie) media);
-    } else {
-      mediaList.getMedias().add(media);
-    }
+  private static void addMediaToCollection(Media media) throws AlreadyExistException {
+    if (media instanceof Entertainment) medias.addEntertainment((Entertainment) media);
+    else if (media instanceof CrimeDrama) medias.addCrimeDrama((CrimeDrama) media);
+    else if (media instanceof RomanticDrama) medias.addRomanticDrama((RomanticDrama) media);
+    else if (media instanceof HistoricalDrama) medias.addHistoricalDrama((HistoricalDrama) media);
+    else if (media instanceof SadMovie) medias.addSadMovie((SadMovie) media);
+    else if (media instanceof ActionMovie) medias.addActionMovie((ActionMovie) media);
+    else if (media instanceof Drama) medias.addDrama((Drama) media);
+    else if (media instanceof Movie) medias.addMovie((Movie) media);
+    else medias.addMedia(media);
   }
 
   private static void deleteMedia() {

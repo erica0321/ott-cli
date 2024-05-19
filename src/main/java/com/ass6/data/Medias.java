@@ -1,22 +1,23 @@
 package com.ass6.data;
 
 import com.ass6.media.*;
+import com.ass6.utils.AlreadyExistException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Medias {
-  private List<Media> medias = new ArrayList<>(10);
-  private List<Entertainment> entertainments = new ArrayList<>(10);
-  private List<Drama> dramas = new ArrayList<>(10);
-  private List<RomanticDrama> romanticDramas = new ArrayList<>(10);
-  private List<CrimeDrama> crimeDramas = new ArrayList<>(10);
-  private List<HistoricalDrama> historicalDramas = new ArrayList<>(10);
-  private List<Movie> movies = new ArrayList<>(10);
-  private List<SadMovie> sadMovies = new ArrayList<>(10);
-  private List<ActionMovie> actionMovies = new ArrayList<>(10);
+  public static List<Media> medias = new ArrayList<>(10);
+  public static List<Entertainment> entertainments = new ArrayList<>(10);
+  public static List<Drama> dramas = new ArrayList<>(10);
+  public static List<RomanticDrama> romanticDramas = new ArrayList<>(10);
+  public static List<CrimeDrama> crimeDramas = new ArrayList<>(10);
+  public static List<HistoricalDrama> historicalDramas = new ArrayList<>(10);
+  public static List<Movie> movies = new ArrayList<>(10);
+  public static List<SadMovie> sadMovies = new ArrayList<>(10);
+  public static List<ActionMovie> actionMovies = new ArrayList<>(10);
 
-  {
+  static {
     medias.add(new Media("KBS 9시 뉴스", 60));
 
     entertainments.add(new Entertainment("신서유기", 90, "tvN"));
@@ -62,7 +63,6 @@ public class Medias {
     actionMovies.add(new ActionMovie("존 윅", 101, 5000000, true, "Summit Entertainment"));
   }
 
-
   public List<Media> getMedias() {
     return medias;
   }
@@ -99,34 +99,102 @@ public class Medias {
     return actionMovies;
   }
 
-  public void addEntertainment(Entertainment media) {
+  public void addMedia(Media media) throws AlreadyExistException {
+    for( Media mediaInstance : medias) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
+    medias.add(media);
+  }
+
+  public void addEntertainment(Entertainment media) throws AlreadyExistException {
+    for( Entertainment mediaInstance : entertainments) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
     entertainments.add(media);
   }
 
-  public void addDrama(Drama media) {
+  public void addDrama(Drama media) throws AlreadyExistException {
+    for( Drama mediaInstance : dramas) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
     dramas.add(media);
   }
 
-  public void addCrimeDrama(CrimeDrama media) {
+  public void addCrimeDrama(CrimeDrama media) throws AlreadyExistException {
+    for( CrimeDrama mediaInstance : crimeDramas) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
     crimeDramas.add(media);
   }
-  public void addRomanticDrama(RomanticDrama media) {
+
+  public void addRomanticDrama(RomanticDrama media) throws AlreadyExistException {
+    for( RomanticDrama mediaInstance : romanticDramas) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
     romanticDramas.add(media);
   }
 
-  public void addHistoricalDrama(HistoricalDrama media) {
+  public void addHistoricalDrama(HistoricalDrama media) throws AlreadyExistException {
+    for( HistoricalDrama mediaInstance : historicalDramas) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
     historicalDramas.add(media);
   }
 
-  public void addMovie(Movie media) {
+  public void addMovie(Movie media) throws AlreadyExistException {
+    for( Movie mediaInstance : movies) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
     movies.add(media);
   }
 
-  public void addSadMovie(SadMovie media) {
+  public void addSadMovie(SadMovie media) throws AlreadyExistException {
+    for( SadMovie mediaInstance : sadMovies) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
     sadMovies.add(media);
   }
 
-  public void addActionMovie(ActionMovie media) {
+  public void addActionMovie(ActionMovie media) throws AlreadyExistException {
+    for( ActionMovie mediaInstance : actionMovies) {
+      String old = mediaInstance.toString().replaceAll(" ",  "");
+      String newOne = media.toString().replaceAll(" ", "");
+      if(old.equals(newOne)) {
+        throw new AlreadyExistException();
+      }
+    }
     actionMovies.add(media);
   }
 }
