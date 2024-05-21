@@ -8,12 +8,8 @@ public class CrimeDrama extends Drama {
     this.crimeType = crimeType;
   }
 
-  public String getCrimeType() {
-    return crimeType;
-  }
-
   @Override
   public String toString() {
-    return super.toString() + " - " + getCrimeType();
+    return super.toString() + " - " + this.crimeType;
   }
 }

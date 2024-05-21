@@ -21,6 +21,6 @@ Movie extends Media {
 
   @Override
   public String toString() {
-    return super.getTitle() + " (" + super.getDuration() + "분, " + getView() + "명, " + (getRelease() ? "상영중" : "상영중 아님") + ")";
+    return super.getTitle() + " (" + super.getDuration() + "분, " + this.view + "명, " + (this.release ? "상영중" : "상영중 아님") + ")";
   }
 }

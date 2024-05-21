@@ -5,6 +5,7 @@ import com.ass6.user.Player;
 
 import java.util.List;
 
+import static com.ass6.data.Medias.*;
 import static com.ass6.utils.PlayerActionConstant.*;
 import static com.ass6.Main.*;
 import static com.ass6.utils.InputUtils.getUserInput;
@@ -19,9 +20,7 @@ public class Media {
     this.duration = duration;
   }
 
-  public Media() {
-
-  }
+  public Media() {  }
 
   public String getTitle() {
     return title;
@@ -52,15 +51,15 @@ public class Media {
     Medias mediaList = new Medias();
 
     return switch (type) {
-      case 1 -> mediaList.getMedias();
-      case 2 -> mediaList.getEntertainments();
-      case 3 -> mediaList.getDramas();
-      case 4 -> mediaList.getCrimeDramas();
-      case 5 -> mediaList.getRomanticDramas();
-      case 6 -> mediaList.getHistoricalDramas();
-      case 7 -> mediaList.getMovies();
-      case 8 -> mediaList.getSadMovies();
-      case 9 -> mediaList.getActionMovies();
+      case 1 -> medias;
+      case 2 -> entertainments;
+      case 3 -> dramas;
+      case 4 -> romanticDramas;
+      case 5 -> crimeDramas;
+      case 6 -> historicalDramas;
+      case 7 -> movies;
+      case 8 -> sadMovies;
+      case 9 -> actionMovies;
       default -> null;
     };
   }

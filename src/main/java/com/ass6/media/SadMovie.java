@@ -8,16 +8,8 @@ public class SadMovie extends Movie {
     this.reason = reason;
   }
 
-  public String getReason() {
-    return reason;
-  }
-
-  public void setReason(String reason) {
-    this.reason = reason;
-  }
-
   @Override
   public String toString() {
-    return super.toString() + " - " + getReason() ;
+    return super.toString() + " - " + this.reason ;
   }
 }

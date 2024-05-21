@@ -9,10 +9,11 @@ import static com.ass6.utils.PrintUtils.*;
 
 public class Main {
   public static User logInUser;
+  public static boolean keepRunning = true;
 
   public static void main(String[] args) {
-    //로그인 하기
-    while(true) {
+
+    while (keepRunning) {
       String banner = "  _  __   ____    _____       _____    _______   _______ \n" +
           " | |/ /  / __ \\  |  ___|     /  _  \\  |__   __| |__   __|\n" +
           " | ' /  | |  |_| | |___     | |   | |    | |       | |   \n" +
@@ -36,6 +37,7 @@ public class Main {
   }
 
   public static void exitSystem() {
+    keepRunning = true;
     System.out.println("| ⚠️ KCS OTT를 종료합니다. 이용해주셔서 감사합니다.");
     printLine();
     System.exit(0);

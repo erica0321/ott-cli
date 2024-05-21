@@ -8,12 +8,8 @@ public class ActionMovie extends Movie {
     this.film = film;
   }
 
-  public String getFilm() {
-    return film;
-  }
-
   @Override
   public String toString() {
-    return super.toString() + " - " + getFilm();
+    return super.toString() + " - " + this.film;
   }
 }

@@ -5,7 +5,6 @@ import com.ass6.user.Player;
 import com.ass6.user.User;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import static com.ass6.Main.exitSystem;
@@ -18,9 +17,6 @@ public class Users {
     users.add(new Admin("admin1", "Qwer123!", "top"));
   }
 
-  public static List<User> getUsers() {
-    return users;
-  }
 
   public static User logIn() {
     System.out.println("| 📢 로그인을 선택하셨습니다. ");

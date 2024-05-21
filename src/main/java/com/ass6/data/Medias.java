@@ -63,42 +63,6 @@ public class Medias {
     actionMovies.add(new ActionMovie("존 윅", 101, 5000000, true, "Summit Entertainment"));
   }
 
-  public List<Media> getMedias() {
-    return medias;
-  }
-
-  public List<Entertainment> getEntertainments() {
-    return entertainments;
-  }
-
-  public List<Drama> getDramas() {
-    return dramas;
-  }
-
-  public List<RomanticDrama> getRomanticDramas() {
-    return romanticDramas;
-  }
-
-  public List<CrimeDrama> getCrimeDramas() {
-    return crimeDramas;
-  }
-
-  public List<HistoricalDrama> getHistoricalDramas() {
-    return historicalDramas;
-  }
-
-  public List<Movie> getMovies() {
-    return movies;
-  }
-
-  public List<SadMovie> getSadMovies() {
-    return sadMovies;
-  }
-
-  public List<ActionMovie> getActionMovies() {
-    return actionMovies;
-  }
-
   public void addMedia(Media media) throws AlreadyExistException {
     for( Media mediaInstance : medias) {
       String old = mediaInstance.toString().replaceAll(" ",  "");

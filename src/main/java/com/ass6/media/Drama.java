@@ -20,6 +20,6 @@ public class Drama extends Media {
 
   @Override
   public String toString() {
-    return super.getTitle() + " (" + super.getDuration() + "분, 총 " + getEpisodes() + "회, 평점 " + getRating() + ")";
+    return super.getTitle() + " (" + super.getDuration() + "분, 총 " + this.episodes + "회, 평점 " + this.rating + ")";
   }
 }

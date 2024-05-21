@@ -5,7 +5,6 @@ import com.ass6.mediaFactory.*;
 import com.ass6.media.*;
 import com.ass6.utils.AlreadyExistException;
 
-import java.awt.print.Pageable;
 import java.util.*;
 
 import static com.ass6.media.Media.*;
@@ -19,72 +18,78 @@ public class MediaController {
   public static void addMedia() {
     printLine();
 
-    while (true) {
+    boolean keepAdding = true;
+
+    while (keepAdding) {
       System.out.println("| 📢 영상 등록을 선택하셨습니다. 다음은 영상 타입입니다.");
       printMediaType();
       printLine();
 
       int mediaType = getUserInput("| 🫧 등록할 영상 타입 번호를 입력해주세요 : ", 1, 9);
       switch (mediaType) {
-        case 1 -> makeMedia(new MediaFactoryImpl());
-        case 2 -> makeMedia(new EntertainmentFactory());
-        case 3 -> makeMedia(new DramaFactory());
-        case 4 -> makeMedia(new CrimeDramaFactory());
-        case 5 -> makeMedia(new RomanticDramaFactory());
-        case 6 -> makeMedia(new HistoricalDramaFactory());
-        case 7 -> makeMedia(new MovieFactory());
-        case 8 -> makeMedia(new SadMovieFactory());
-        case 9 -> makeMedia(new ActionMovieFactory());
+        case 1 -> addMediaFactory(new MediaFactoryImpl());
+        case 2 -> addMediaFactory(new EntertainmentFactory());
+        case 3 -> addMediaFactory(new DramaFactory());
+        case 4 -> addMediaFactory(new CrimeDramaFactory());
+        case 5 -> addMediaFactory(new RomanticDramaFactory());
+        case 6 -> addMediaFactory(new HistoricalDramaFactory());
+        case 7 -> addMediaFactory(new MovieFactory());
+        case 8 -> addMediaFactory(new SadMovieFactory());
+        case 9 -> addMediaFactory(new ActionMovieFactory());
       }
 
       int keepAdd = getUserInput("| ⚠️ 계속 등록하시겠습니까? (0: 예, 1: 아니오): ", 0, 1);
       if (keepAdd == 1) {
-        return;
+        keepAdding = false;
       }
       printLine();
     }
   }
 
-  public static void eraseMedia() {
+  public static void deleteMedia() {
     printLine();
-    while (true) {
+    boolean keepDeleting = true;
+
+    while (keepDeleting) {
       System.out.println("| 📢 영상 삭제를 선택하셨습니다. 다음은 영상 타입입니다.");
       printMediaType();
       printLine();
 
       // 영상 삭제
-      deleteMedia();
+      deleteMediaDetail();
 
       int keepDelete = getUserInput("| ⚠️ 계속 삭제하시겠습니까? (0: 예, 1: 아니오): ", 0, 1);
       if (keepDelete == 1) {
-        return;
+        keepDeleting = false;
       }
       printLine();
     }
   }
 
-  private static void makeMedia(MediaFactory factory) {
+  private static void addMediaFactory(MediaFactory factory) {
     Scanner input = new Scanner(System.in);
     printLine();
 
     Media media;
-    while (true) {
+    boolean isValidInput = false;
+    while (!isValidInput) {
       try {
         media = factory.createMedia(input);
+        addMediaToCollection(media);
+        isValidInput = true;
+
+        printLine();
+        System.out.println("| 📢 등록이 완료됐습니다. 등록된 내용은 다음과 같습니다.");
+        System.out.println("| " + media.toString());
+        printLine();
         break;
       } catch (InputMismatchException e) {
         printInputError();
+        input.nextLine();
+      } catch (AlreadyExistException e) {
+        isValidInput = true;
+        printAlreadyExist();
       }
-    }
-
-    try {
-      addMediaToCollection(media);
-      printLine();
-      System.out.println("| 📢 등록이 완료됐습니다. 등록된 내용은 다음과 같습니다.");
-      System.out.println("| " + media.toString());
-      printLine();
-    } catch (AlreadyExistException e) {
-      printAlreadyExist();
     }
   }
 
@@ -100,7 +105,7 @@ public class MediaController {
     else medias.addMedia(media);
   }
 
-  private static void deleteMedia() {
+  private static void deleteMediaDetail() {
     int mediaType = getUserInput("| 🫧 삭제할 영상 타입 번호를 입력해주세요: ", 1, 9);
     List<? extends Media> targetMedias = checkActions(mediaType);
 
