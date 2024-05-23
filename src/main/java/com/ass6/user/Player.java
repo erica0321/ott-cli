@@ -12,7 +12,7 @@ import static com.ass6.utils.InputUtils.getUserInput;
 import static com.ass6.utils.PrintUtils.printLine;
 import static com.ass6.utils.PrintUtils.printLogOut;
 
-public class Player extends User {
+public class Player extends User implements Actionable {
   private List<Media> watched;
 
   public Player(String id, String password, List<Media> watched) {
@@ -28,7 +28,8 @@ public class Player extends User {
     watched.add(0, media);
   }
 
-  public void showPlayerAction() {
+  @Override
+  public void showAction() {
     printLine();
     boolean keepRunning = true;
 

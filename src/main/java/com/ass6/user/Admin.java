@@ -10,7 +10,7 @@ import static com.ass6.utils.InputUtils.getUserInput;
 import static com.ass6.utils.PrintUtils.printLine;
 import static com.ass6.utils.PrintUtils.printLogOut;
 
-public class Admin extends User{
+public class Admin extends User implements Actionable{
   private String role;
 
   public Admin(String id, String password, String role) {
@@ -18,7 +18,8 @@ public class Admin extends User{
     this.role = role;
   }
 
-  public void showAdminAction() {
+  @Override
+  public void showAction() {
     boolean keepAdminAction = true;
     while (keepAdminAction) {
       printLine();
