@@ -24,15 +24,29 @@ public class Main {
       String message = "예능, 드라마, 영화 스트리밍 하세요!";
       printInBox(banner, message);
 
-      logInUser = logIn();
+      Thread loginThread = new Thread(() -> {
+        logInUser = logIn(); // 별도의 스레드에서 로그인 처리
+        postLogin(logInUser);
+      });
 
-      if (logInUser instanceof Player) {
-        System.out.println("| 🤗 " + logInUser.getId() + " 님 환영합니다.");
-        ((Player) logInUser).showPlayerAction(); // 캐스팅
-      } else if (logInUser instanceof Admin) {
-        System.out.println("| 🤗 관리자님 환영합니다.");
-        ((Admin) logInUser).showAdminAction();
+      loginThread.start();
+
+      try {
+        loginThread.join(); // 메인 스레드는 로그인 스레드가 완료될 때까지 기다립니다.
+      } catch (InterruptedException e) {
+        System.out.println("로그인 스레드가 중단되었습니다.");
       }
+
+    }
+  }
+
+  public static void postLogin(User user) {
+    if (logInUser instanceof Player) {
+      System.out.println("| 🤗 " + logInUser.getId() + " 님 환영합니다.");
+      ((Player) logInUser).showAction(); // 캐스팅
+    } else if (logInUser instanceof Admin) {
+      System.out.println("| 🤗 관리자님 환영합니다.");
+      ((Admin) logInUser).showAction();
     }
   }
 
