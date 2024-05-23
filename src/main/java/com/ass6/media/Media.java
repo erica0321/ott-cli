@@ -1,6 +1,6 @@
 package com.ass6.media;
 
-import com.ass6.data.Medias;
+import com.ass6.advertisement.AdTask;
 import com.ass6.user.Player;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class Media {
     this.duration = duration;
   }
 
-  public Media() {  }
+  public Media() { }
 
   public String getTitle() {
     return title;
@@ -43,29 +43,15 @@ public class Media {
 
     //시청할 영상 타입 번호 입력
     int mediaType = getUserInput("| 🫧 시청할 영상 타입 번호를 입력해주세요: ", MIN_MEDIA_TYPE, MAX_MEDIA_TYPE);
-    return checkActions(mediaType);
-  }
-
-  //영상 타입에 따른 영상 목록 전달
-  public static List<? extends Media> checkActions(int type) {
-    Medias mediaList = new Medias();
-
-    return switch (type) {
-      case 1 -> medias;
-      case 2 -> entertainments;
-      case 3 -> dramas;
-      case 4 -> romanticDramas;
-      case 5 -> crimeDramas;
-      case 6 -> historicalDramas;
-      case 7 -> movies;
-      case 8 -> sadMovies;
-      case 9 -> actionMovies;
-      default -> null;
-    };
+    return getMedias(mediaType);
   }
 
   //영상 목록 속 영상들 보여주기 및 시청
   public static boolean showMedia(List<? extends Media> medias) {
+    if (medias == null || medias.isEmpty()) {
+      return getUserInput("| ⚠️ 영상이 없습니다. 프로그램을 종료하시겠습니까? (0: 종료, 1: 다른 활동하기): ", 0, 1) == 1;
+    }
+
     printMediaList(medias);
 
     int mediaNum = getUserInput("| 🫧 시청하실 영상의 번호를 입력해주세요: ", 1, medias.size());
@@ -73,14 +59,26 @@ public class Media {
     System.out.println("| 🍿 '" + targetMedia + "'을 시청중입니다.");
     ((Player) logInUser).addWatched(targetMedia);
 
+    //광고 스레드 실행
+    AdTask adTask = new AdTask();
+    adTask.start();
+
     // 5초 대기
     try {
+      adTask.join();
+      System.out.println("| 💡 광고 시청이 종료되었습니다.");
+      printLine();
+      System.out.println("| 🍿 '" + targetMedia + "'을 계속 시청중입니다.");
       Thread.sleep(5000);
-    } catch (InterruptedException e) {
+    } catch (
+        InterruptedException e) {
       e.printStackTrace();
+      System.out.println(e.getMessage());
     }
 
     printLine();
-    return getUserInput("| ⚠️ 영상이 끝났습니다. 프로그램을 종료하시겠습니까? (0: 종료, 1: 다른 활동하기): ", 0, 1) == 1;
+    return
+
+        getUserInput("| ⚠️ 영상이 끝났습니다. 프로그램을 종료하시겠습니까? (0: 종료, 1: 다른 활동하기): ", 0, 1) == 1;
   }
 }

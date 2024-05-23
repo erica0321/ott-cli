@@ -7,7 +7,7 @@ import com.ass6.utils.AlreadyExistException;
 
 import java.util.*;
 
-import static com.ass6.media.Media.*;
+import static com.ass6.data.Medias.getMedias;
 import static com.ass6.utils.InputUtils.getUserInput;
 import static com.ass6.utils.PrintUtils.*;
 
@@ -87,8 +87,8 @@ public class MediaController {
         printInputError();
         input.nextLine();
       } catch (AlreadyExistException e) {
-        isValidInput = true;
         printAlreadyExist();
+        break;
       }
     }
   }
@@ -107,7 +107,7 @@ public class MediaController {
 
   private static void deleteMediaDetail() {
     int mediaType = getUserInput("| 🫧 삭제할 영상 타입 번호를 입력해주세요: ", 1, 9);
-    List<? extends Media> targetMedias = checkActions(mediaType);
+    List<? extends Media> targetMedias = getMedias(mediaType);
 
     if (targetMedias.isEmpty()) {
       System.out.println("| ⚠️ 영상이 없습니다.");

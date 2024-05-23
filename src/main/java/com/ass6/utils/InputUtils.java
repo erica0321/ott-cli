@@ -19,10 +19,10 @@ public class InputUtils {
         if (result < min || result > max) {
           throw new InvalidInputException();
         }
-        validInput = true;  // 유효한 입력을 받으면 루프 종료
+        validInput = true;
       } catch (InputMismatchException e) {
         printInputError();
-        input.next(); // 잘못된 입력을 버퍼에서 제거
+        input.next();
       } catch (InvalidInputException e) {
         printInputError();
       }

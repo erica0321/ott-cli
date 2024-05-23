@@ -63,6 +63,22 @@ public class Medias {
     actionMovies.add(new ActionMovie("존 윅", 101, 5000000, true, "Summit Entertainment"));
   }
 
+  public static List<? extends Media> getMedias(int type) {
+    return switch (type) {
+      case 1 -> medias;
+      case 2 -> entertainments;
+      case 3 -> dramas;
+      case 4 -> romanticDramas;
+      case 5 -> crimeDramas;
+      case 6 -> historicalDramas;
+      case 7 -> movies;
+      case 8 -> sadMovies;
+      case 9 -> actionMovies;
+      default -> null;
+    };
+  }
+
+
   public void addMedia(Media media) throws AlreadyExistException {
     for( Media mediaInstance : medias) {
       String old = mediaInstance.toString().replaceAll(" ",  "");
