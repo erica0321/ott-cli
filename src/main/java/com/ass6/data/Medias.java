@@ -68,8 +68,8 @@ public class Medias {
       case 1 -> medias;
       case 2 -> entertainments;
       case 3 -> dramas;
-      case 4 -> romanticDramas;
-      case 5 -> crimeDramas;
+      case 4 -> crimeDramas;
+      case 5-> romanticDramas;
       case 6 -> historicalDramas;
       case 7 -> movies;
       case 8 -> sadMovies;
