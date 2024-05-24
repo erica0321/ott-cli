@@ -26,16 +26,29 @@ public class MediaController {
       printLine();
 
       int mediaType = getUserInput("| 🫧 등록할 영상 타입 번호를 입력해주세요 : ", 1, 9);
-      switch (mediaType) {
-        case 1 -> addMediaFactory(new MediaFactoryImpl());
-        case 2 -> addMediaFactory(new EntertainmentFactory());
-        case 3 -> addMediaFactory(new DramaFactory());
-        case 4 -> addMediaFactory(new CrimeDramaFactory());
-        case 5 -> addMediaFactory(new RomanticDramaFactory());
-        case 6 -> addMediaFactory(new HistoricalDramaFactory());
-        case 7 -> addMediaFactory(new MovieFactory());
-        case 8 -> addMediaFactory(new SadMovieFactory());
-        case 9 -> addMediaFactory(new ActionMovieFactory());
+      MediaFactory factory = switch (mediaType) {
+        case 1 -> (new MediaFactoryImpl());
+        case 2 -> (new EntertainmentFactory());
+        case 3 -> (new DramaFactory());
+        case 4 -> (new CrimeDramaFactory());
+        case 5 -> (new RomanticDramaFactory());
+        case 6 -> (new HistoricalDramaFactory());
+        case 7 -> (new MovieFactory());
+        case 8 -> (new SadMovieFactory());
+        case 9 -> (new ActionMovieFactory());
+        default -> throw new IllegalStateException();
+      };
+
+      Thread addMediaThread = new Thread(() -> {
+        addMediaFactory(factory);
+      });
+
+      addMediaThread.start();
+
+      try {
+        addMediaThread.join();
+      } catch (InterruptedException e) {
+        System.out.println("| ⚠️ 영상 등록이 중단되었습니다.");
       }
 
       int keepAdd = getUserInput("| ⚠️ 계속 등록하시겠습니까? (0: 예, 1: 아니오): ", 0, 1);
