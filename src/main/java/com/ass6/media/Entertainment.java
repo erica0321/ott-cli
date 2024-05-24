@@ -14,7 +14,7 @@ public class Entertainment extends Media {
 
   @Override
   public String toString() {
-    return "제목: " + super.getTitle() + " (" + super.getDuration() + "분, " + this.channel + ")";
+    return super.getTitle() + " (" + super.getDuration() + "분, " + this.channel + ")";
   }
 }
 
