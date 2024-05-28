@@ -145,9 +145,9 @@
   |클래스 명|속성|메서드|
   |:---|:---|:---|
   |User|- id: 사용자의 id <br/>- password: 사용자 비밀번호|- toString(): 유저 id 문자열로 반환|
-  |Player|- watched: 사용자의 영상 시청 기록 리스트|- addWatched: 영상 시청 기록 추가 <br/>- showWatchedList: 사용자의 영상 시청 기록 반환|
-  |Admin|- role: 역할||
-  |Actionalble|- showAction: 사용자 혹은 관리자가 하는 행동|
+  |Player|- watched: 사용자의 영상 시청 기록 리스트|- addWatched: 영상 시청 기록 추가 <br/>- showWatchedList: 사용자의 영상 시청 기록 반환  <br/>- showAction(): 오버라이딩 -> 사용자 액션|
+  |Admin|- role: 역할|- showAction(): 오버라이딩 -> 관리자 액션|
+  |Actionalble||- showAction: 사용자 혹은 관리자가 하는 행동|
 
 
 ### MediaFactory 인터페이스
