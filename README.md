@@ -106,7 +106,7 @@
 - 영상 삭제하기일 경우, 영상 목록 + 인덱스롤 보여주고, 인덱스를 입력받아 해당 영상 삭제
 
 ### Media 클래스 
-<img src="https://github.com/erica0321/ott-cli/assets/81230764/60714036-6838-4d43-8efb-735d1780058d" style="width: 800px" />
+<img src="https://github.com/erica0321/ott-cli/assets/81230764/4e29688f-540b-4131-98e5-588a0de88b5c" style="width: 800px" />
 
 <img src="https://github.com/erica0321/ott-cli/assets/81230764/97e79102-1334-4e1c-a415-3414ba7e8b4f" style="width: 600px" />
 
@@ -134,7 +134,7 @@
 
 
 ### User 클래스
-<img src="https://github.com/erica0321/ott-cli/assets/81230764/ccc3de29-35ff-4d52-9865-fbda21c8ba0a" style="width: 400px" />
+<img src="https://github.com/erica0321/ott-cli/assets/81230764/ca91fbbb-efbc-48c5-a522-8964c0f96ee9" style="width: 400px" />
 <img src="https://github.com/erica0321/ott-cli/assets/81230764/2398051c-dd5d-4c0d-a1f7-c17b93c76ee9" style="width: 400px" />
 
 - 슈퍼 클래스: User
@@ -151,7 +151,7 @@
 
 
 ### MediaFactory 인터페이스
-<img src="https://github.com/erica0321/ott-cli/assets/81230764/90ce9041-12bd-485f-99c5-bfe59e1fb5b9" style="width: 800px" />
+<img src="https://github.com/erica0321/ott-cli/assets/81230764/2d69d3cb-2ee4-4895-815a-45aa8847199c" style="width: 800px" />
 
 - 디자인 패턴 Factory Method 구현
 - 인터페이스: MediaFactory
